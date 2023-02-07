@@ -63,6 +63,36 @@ const Sidebar = () => {
               </Box>
             )}
           </MenuItem>
+          {/* user */}
+          {!isCollapsed && (
+            <Box mb="25px">
+              <Box display="flex" justifyContent="center" alignItems="center">
+                <img
+                  alt="user"
+                  width="100px"
+                  height="100px"
+                  src="../../images/r1.avif"
+                  style={{ cursor: "pointer", borderRadius: "50%" }}
+                />
+              </Box>
+              <Box>
+                {/* Restaurant Name */}
+                <Typography
+                  variant="h3"
+                  fontWeight="bold"
+                  sx={{ m: "10px 0 0 0 " }}
+                  color={colors.grey[100]}
+                >
+                  PARKS CENTRAL RESTAURANT
+                </Typography>
+                {/* Restaurant Address */}
+                <Typography variant="h5" color={colors.greenAccent[500]}>
+                  p4, Main Street, Sangrur
+                </Typography>
+              </Box>
+            </Box>
+          )}
+          {/* menu items */}
         </Menu>
       </ProSidebar>
     </Box>
