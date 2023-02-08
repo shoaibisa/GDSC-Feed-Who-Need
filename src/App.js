@@ -6,6 +6,7 @@ import { ColorModeContext, useMode } from "./theme.js";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import LandingPage from "./screens/LandingPage.jsx";
 import UserDashboard from "./screens/dashboard/index.jsx";
+import UserProfileEdit from "./screens/forms/index.jsx";
 function App() {
   const [theme, colorMode] = useMode();
   return (
@@ -20,6 +21,7 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/dashboard" element={<UserDashboard />} />
+              <Route path="/profile" element={<UserProfileEdit />} />
             </Routes>
           </main>
         </div>
