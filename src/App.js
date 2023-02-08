@@ -10,6 +10,7 @@ import SignUpRes from "./screens/register/SignUpRes";
 import SignUpVol from "./screens/register/SignUpVol";
 import SignIn from "./screens/register/SignIn";
 import SignUp from "./screens/register/SignUp";
+import UserProfileEdit from "./screens/forms/index.jsx";
 function App() {
   const [theme, colorMode] = useMode();
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route path="/volunteer/signupvol" element={<SignUpVol />} />
               <Route path="/restaurant/signin" element={<SignIn />} />
               <Route path="/volunteer/signin" element={<signIn />} />
+              <Route path="/profile" element={<UserProfileEdit />} />
             </Routes>
           </main>
         </div>
