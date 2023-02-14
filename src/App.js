@@ -9,7 +9,7 @@ import UserDashboard from "./screens/dashboard/index.jsx";
 import SignUpRes from "./screens/register/SignUpRes";
 import SignUpVol from "./screens/register/SignUpVol";
 import SignIn from "./screens/register/SignIn";
-import SignUp from "./screens/register/SignUp";
+import Sign from "./screens/register/Sign";
 import UserProfileEdit from "./screens/forms/index.jsx";
 function App() {
   const [theme, colorMode] = useMode();
@@ -25,12 +25,13 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/dashboard" element={<UserDashboard />} />
-              <Route path="/signup" element={<SignUp />} />
+              <Route path="/signup" element={<Sign />} />
               <Route path="/restaurant/signupres" element={<SignUpRes />} />
               <Route path="/volunteer/signupvol" element={<SignUpVol />} />
               <Route path="/restaurant/signin" element={<SignIn />} />
-              <Route path="/volunteer/signin" element={<signIn />} />
+              <Route path="/volunteer/signin" element={<SignIn />} />
               <Route path="/profile" element={<UserProfileEdit />} />
+              {/* <Route path="/p" element={<UserProfileEdit />} /> */}
             </Routes>
           </main>
         </div>
