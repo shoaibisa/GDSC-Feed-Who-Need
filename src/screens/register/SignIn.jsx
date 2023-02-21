@@ -7,35 +7,13 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Input from '@mui/material/Input';
 import IconButton from '@mui/material/IconButton';
 // import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
 const initialValues = {
-  name: "",
   email: "",
-  address: "",
-  pincode: "",
-  phone: "",
   password:"",
-  c_password:""
 };
-let pincodeRegex = new RegExp(/^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$/);
-const phoneRegExp =
-  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-const userSchema = yup.object().shape({
-  name: yup.string().required("Name is required"),
-  email: yup.string().email("Invalid email").required("Email is required"),
-  address: yup.string().required("Address is required"),
-  pincode: yup
-    .string()
-    .matches(pincodeRegex, "Pincode number is not valid!")
-    .required("Pincode is required"),
-  phone: yup
-    .string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("Phone is required"),
-});
 
 const UserProfileEdit = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -51,20 +29,17 @@ const UserProfileEdit = () => {
   return (
     <Box m="20px">
       <Header
-        title="Volunteer"
-        subtitle="You are registering as a food distributor."
+        title="Sign In"
       />
       <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
-        validationSchema={userSchema}
       >
         {({
           values,
           handleBlur,
           touched,
           handleChange,
-          handleSubmit,
           errors,
         }) => (
           <form onSubmit={handleFormSubmit}>

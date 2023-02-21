@@ -69,10 +69,6 @@ function BpRadio(props) {
 }
 const Sign = () => {
 const navigate = useNavigate();
-  const handleChange = (event) => {
-    role = event.target.value;
-    console.log("dfaw",role);
-  };
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const handleFormSubmit = () => {
       console.log("dfawsdafgr",role);
@@ -89,34 +85,8 @@ const navigate = useNavigate();
         subtitle="Select the appreopriate option as per your Role:- "
       />
       <Formik onSubmit={handleFormSubmit} initialValues={role}>
-        {/* {({ handleBlur, errors }) => ( */}
           <form onSubmit={handleFormSubmit}>
-            {/* <Box
-              display="grid"
-              gap="30px"
-              gridTemplateColumns="repeat(4,minmax(0,1fr))" // 4 columns have 1 fraction of the available space
-              sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" }, // 4 columns have 1 fraction of the available space
-              }}> */}
-              {/* <RadioGroup
-                defaultValue={role}
-                // aria-labelledby="demo-customized-radios"
-                // name="customized-radios"
-                id='val' row
-                onChange={handleChange}
-              >
-                <FormControlLabel
-                  value="Restaurant"
-                  control={<BpRadio />}
-                  label="Restaurant"
-                />
-                <FormControlLabel
-                  value="Volunteer"
-                  control={<BpRadio />}
-                  label="Volunteer"
-                />
-              </RadioGroup>
-            </Box> */}
+           
             <Box display="flex" justifyContent="start" alignItem="start" mt="20px">
               <Button variant="contained" color="secondary" type="submit" sx={{mr:2}} onClick={()=>navigate("/restaurant/signupres")}>
                 Restaurant
