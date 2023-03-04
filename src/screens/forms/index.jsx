@@ -1,135 +1,154 @@
-import { Box, Button, TextField } from "@mui/material";
-import { Formik } from "formik";
-import * as yup from "yup";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import Header from "../../components/Header";
-const initialValues = {
-  name: "",
-  email: "",
-  address: "",
-  pincode: "",
-  phone: "",
-};
-let pincodeRegex = new RegExp(/^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$/);
-const phoneRegExp =
-  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-const userSchema = yup.object().shape({
-  name: yup.string().required("Name is required"),
-  email: yup.string().email("Invalid email").required("Email is required"),
-  address: yup.string().required("Address is required"),
-  pincode: yup
-    .string()
-    .matches(pincodeRegex, "Pincode number is not valid!")
-    .required("Pincode is required"),
-  phone: yup
-    .string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("Phone is required"),
-});
+import { useState, useContext } from "react";
+import styles from "./profile.module.css";
+// import axios from "axios";
+// import logo from "../../images/techFEST '23.webp";
+import { Link, useNavigate } from "react-router-dom";
+// import AuthContext from "../../auth/authContext";
+// import Loader from '../Loader/Loader.js';
 
 const UserProfileEdit = () => {
-  const isNonMobile = useMediaQuery("(min-width:600px)");
-  const handleFormSubmit = (values) => {
-    console.log(values);
+  // const authContext = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const [pincode, setPincode] = useState("");
+  const [password, setPassword] = useState("");
+  const [c_password, setC_Password] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorsMade, setErrorsMade] = useState();
+  const [fieldErr, setFieldErr] = useState(null);
+  const [mailErr, setMailErr] = useState(null);
+  const [passwordErr, setPasswordErr] = useState(null);
+  const navigate = useNavigate();
+
+  
+  const PostData = async (e) => {
+    e.preventDefault();
+    if (email.trim().length === 0 || password.trim().length === 0) {
+      setFieldErr("Field should not be empty");
+      setTimeout(() => {
+        setFieldErr(null);
+      }, 3000);
+      return;
+    }
+    if (!email.trim().includes("@")) {
+      setMailErr("Invalid mail!");
+      setTimeout(() => {
+        setMailErr(null);
+      }, 3000);
+      return;
+    }
+    const user = {
+      email: email,
+      password: password,
+    };
+    setIsLoading(true);
+    // userLoginHandle(user);
   };
+
   return (
-    <Box m="20px">
-      <Header
-        title="Edit Profile"
-        subtitle="Change necessary details on your profile"
-      />
-      <Formik
-        onSubmit={handleFormSubmit}
-        initialValues={initialValues}
-        validationSchema={userSchema}
-      >
-        {({
-          values,
-          handleBlur,
-          touched,
-          handleChange,
-          handleSubmit,
-          errors,
-        }) => (
-          <form onSubmit={handleFormSubmit}>
-            <Box
-              display="grid"
-              gap="30px"
-              gridTemplateColumns="repeat(4,minmax(0,1fr))" // 4 columns have 1 fraction of the available space
-              sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" }, // 4 columns have 1 fraction of the available space
-              }}
-            >
-              <TextField
-                fullWidth
-                variant="filled"
-                label="Name"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.name}
-                name="name"
-                error={touched.name && Boolean(errors.name)}
-                helperText={touched.name && errors.name}
-                sx={{ gridColumn: "span 4" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                label="Email"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.email}
-                name="email"
-                error={touched.email && Boolean(errors.email)}
-                helperText={touched.email && errors.email}
-                sx={{ gridColumn: "span 4" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                label="Contact Number"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.phone}
-                name="phone"
-                error={touched.phone && Boolean(errors.phone)}
-                helperText={touched.phone && errors.phone}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                label="Pincode"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.pincode}
-                name="pincode"
-                error={touched.pincode && Boolean(errors.pincode)}
-                helperText={touched.pincode && errors.pincode}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                label="Address"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.address}
+    <>
+      {/* {isLoading && <Loader />} */}
+      <div className={styles.profile__content}>
+        <div className={styles.profile__page}>
+          {errorsMade && <p style={{ color: "red" }}>{errorsMade}</p>}
+          <form
+            method="post"
+            onSubmit="return myFormValidation()"
+            className={styles.profile__inputFields}
+            action=""
+          >
+            {fieldErr && <p style={{ color: "red" }}>{fieldErr}</p>}
+            {password && <p style={{ color: "red" }}>{passwordErr}</p>}
+            <label htmlFor="name" className={styles.profile__label}>
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              autoComplete='off'
+            />
+            <label htmlFor="email" className={styles.profile__label}>
+              {mailErr && <p style={{ color: "red" }}>{mailErr}</p>}
+              E-mail
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              autoComplete='off'
+            />
+            <label htmlFor="phone" className={styles.profile__label}>
+              Contact Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Enter your Phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+              autoComplete='off'
+            />
+            <label htmlFor="address" className={styles.profile__label}>
+              Address
+            </label>
+             <input
+              placeholder="Enter your address"
+                value={address}
+              onChange={(e) => setAddress(e.target.value)}
                 name="address"
-                error={touched.address && Boolean(errors.address)}
-                helperText={touched.address && errors.address}
-                sx={{ gridColumn: "span 4" }}
               />
-            </Box>
-            <Box display="flex" justifyContent="end" mt="20px">
-              <Button variant="contained" color="secondary" type="submit">
-                Update Profile
-              </Button>
-            </Box>
+                 <label htmlFor="pincode" className={styles.profile__label}>
+              Pin-Code
+            </label>
+             <input
+              placeholder="Enter your pin-code"
+                value={pincode}
+              onChange={(e) => setPincode(e.target.value)}
+                name="address"
+              />
+            <label htmlFor="password" className={styles.profile__label}>
+              Password
+            </label>
+            <input
+              placeholder="Enter your Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              required
+              autoComplete='off'
+            />
+           
+            <div className={styles.profile__div}>
+              <button
+                className={styles.profile__button}
+                value="profile"
+                type="button"
+                onClick={PostData}
+                disabled={isLoading}
+              >
+                Submit
+              </button>
+              {/* <Link to="/forgot-password">Forgot Password?</Link> */}
+            </div>
+            {/* </div> */}
           </form>
-        )}
-      </Formik>
-    </Box>
+         
+        </div>
+      </div>
+      </>
   );
 };
 export default UserProfileEdit;

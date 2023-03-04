@@ -5,7 +5,10 @@ import Header from "../../components/Header";
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import StatBox from "../../components/dashboard/StatBox";
 import { tokens } from "../../theme";
+// import { useLocation } from 'react-router-dom';
 const UserDashboard = () => {
+  // const loc = useLocation();
+  // console.log("lo",loc.pathname);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (

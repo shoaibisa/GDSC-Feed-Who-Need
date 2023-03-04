@@ -1,105 +1,113 @@
-import { Box, Button, TextField, Typography,FilledInput } from "@mui/material";
-import { Formik } from "formik";
-import * as yup from "yup";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import Header from "../../components/Header";
-import React from 'react';
-import { Link } from "react-router-dom";
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import IconButton from '@mui/material/IconButton';
-// import OutlinedInput from '@mui/material/OutlinedInput';
-import InputAdornment from '@mui/material/InputAdornment';
-const initialValues = {
-  email: "",
-  password:"",
-};
+import { useState, useContext } from "react";
+import styles from "./signUp.module.css";
+// import axios from "axios";
+// import logo from "../../images/techFEST '23.webp";
+import { Link, useNavigate } from "react-router-dom";
+// import AuthContext from "../../auth/authContext";
+// import Loader from '../Loader/Loader.js';
 
 const SignIn = () => {
-  const [showPassword, setShowPassword] = React.useState(false);
-  const isNonMobile = useMediaQuery("(min-width:600px)");
-  const handleFormSubmit = (values) => {
-    console.log(values);
-  };
+  // const authContext = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorsMade, setErrorsMade] = useState();
+  const [fieldErr, setFieldErr] = useState(null);
+  const [mailErr, setMailErr] = useState(null);
+  const [passwordErr, setPasswordErr] = useState(null);
+  const navigate = useNavigate();
+
   
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
+  const PostData = async (e) => {
+    e.preventDefault();
+    if (email.trim().length === 0 || password.trim().length === 0) {
+      setFieldErr("Field should not be empty");
+      setTimeout(() => {
+        setFieldErr(null);
+      }, 3000);
+      return;
+    }
+    if (!email.trim().includes("@")) {
+      setMailErr("Invalid mail!");
+      setTimeout(() => {
+        setMailErr(null);
+      }, 3000);
+      return;
+    }
+    const user = {
+      email: email,
+      password: password,
+    };
+    setIsLoading(true);
+    // userLoginHandle(user);
   };
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
   return (
-    <Box m="20px">
-      <Header
-        title="Sign In"
-      />
-      <Formik
-        onSubmit={handleFormSubmit}
-        initialValues={initialValues}
-      >
-        {({
-          values,
-          handleBlur,
-          touched,
-          handleChange,
-          errors,
-        }) => (
-          <form onSubmit={handleFormSubmit}>
-            <Box
-              display="grid"
-              gap="30px"
-              gridTemplateColumns="repeat(4,minmax(0,1fr))" // 4 columns have 1 fraction of the available space
-              sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" }, // 4 columns have 1 fraction of the available space
-              }}
-            >
-              <TextField
-                fullWidth
-                variant="filled"
-                label="Email"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.email}
-                name="email"
-                error={touched.email && Boolean(errors.email)}
-                helperText={touched.email && errors.email}
-                sx={{ gridColumn: "span 2" }}
-              />
-               <FilledInput
-              placeholder="Password"
-              variant='filled'
-              focused
-              sx={{ gridColumn: "span 2" }}
-              id="filled-adornment-password"
-            type={showPassword ? 'text' : 'password'}
-            onBlur={handleBlur}
-            name="password"
-            error={touched.password && Boolean(errors.password)}
-            helperText={touched.password && errors.password}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-            </Box>
-            <Box display="flex" justifyContent="start" mt="20px">
-              <Typography variant="h4">Don't have an account? <Link color="secondary" to={'/signup'}>Sign Up</Link></Typography>
-            </Box>
-            <Box display="flex" justifyContent="end" mt="20px">
-              <Button variant="contained" color="secondary" type="submit">
-                Register
-              </Button>
-            </Box>
+    <>
+      {/* {isLoading && <Loader />} */}
+      <div className={styles.signin__content} >
+        <div className={styles.signin__page}>
+          {errorsMade && <p style={{ color: "red" }}>{errorsMade}</p>}
+          <form
+            method="post"
+            onSubmit="return myFormValidation()"
+            className={styles.signin__inputFields}
+            action=""
+          >
+            <h1 className={styles.signin__title}>Welcome!</h1>
+            <p className={styles.signin__text}><i>Thank You for joining us for a GOOD CAUSE!</i></p>
+            {fieldErr && <p style={{ color: "red" }}>{fieldErr}</p>}
+            {password && <p style={{ color: "red" }}>{passwordErr}</p>}
+           
+            <label htmlFor="email" className={styles.signin__label}>
+              {mailErr && <p style={{ color: "red" }}>{mailErr}</p>}
+              E-mail
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              autoComplete='off'
+            />
+            <label htmlFor="password" className={styles.signin__label}>
+              Password
+            </label>
+            <input
+              placeholder="Enter your Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              required
+              autoComplete='off'
+            />
+            
+            <div className={styles.signin__div}>
+              <button
+                className={styles.signin__button}
+                value="signIn"
+                type="button"
+                onClick={PostData}
+                disabled={isLoading}
+              >
+                Sign In
+              </button>
+              {/* <Link to="/forgot-password">Forgot Password?</Link> */}
+            </div>
+            {/* </div> */}
           </form>
-        )}
-      </Formik>
-    </Box>
+          <p className={styles.signin__text}>
+            Don't have an account?
+            <Link to={"/signup"}>
+              <span className={styles.signin__link}>Sign Up</span>
+            </Link>
+          </p>
+        </div>
+      </div>
+      </>
   );
 };
 export default SignIn;
