@@ -5,7 +5,8 @@ import Topbar from "./screens/partials/Topbar.jsx";
 import { ColorModeContext, useMode } from "./theme.js";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import LandingPage from "./screens/LandingPage.jsx";
-import UserDashboard from "./screens/dashboard/index.jsx";
+import UserDashboard from "./screens/dashboard/indexRes.jsx";
+import UserDashboardVol from "./screens/dashboard/indexVolunteer";
 import UserProfileEdit from "./screens/forms/index.jsx";
 import { Sign,SignIn,SignUpAsRestaurant,SignUpAsVolunteer } from './screens/register';
 import { useLocation } from 'react-router-dom';
@@ -18,14 +19,15 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="App">
-          {(location.pathname==='/dashboard' || location.pathname==='/profile')?<Sidebar />:""}
+          {(location.pathname==='/restaurant/dashboard' || location.pathname==='/profile' || location.pathname==='/volunteer/dashboard')?<Sidebar />:""}
           {/* <Sidebar /> */}
           <main className="content">
             <Topbar />
 
             <Routes>
              <Route path="/" element={<LandingPage />} />
-              <Route path="/dashboard" element={<UserDashboard />} />
+              <Route path="/restaurant/dashboard" element={<UserDashboard />} />
+              <Route path="/volunteer/dashboard" element={<UserDashboardVol />} />
               <Route path="/signup" element={<Sign />} />
               
               <Route path="/restaurant/signUpAsRestaurant" element={<SignUpAsRestaurant />} />
