@@ -44,26 +44,26 @@ const VolunteerProfileEdit = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Your Name"
+                label="First Name"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.restuarantName}
-                name="restuarantName"
-                error={!!touched.restuarantName && !!errors.restuarantName}
-                helperText={touched.restuarantName && errors.restuarantName}
+                value={values.fName}
+                name="fName"
+                error={!!touched.fName && !!errors.fName}
+                helperText={touched.fName && errors.fName}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Owner Name"
+                label="Last Name"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.ownerName}
-                name="ownerName"
-                error={!!touched.ownerName && !!errors.ownerName}
-                helperText={touched.ownerName && errors.ownerName}
+                value={values.lName}
+                name="lName"
+                error={!!touched.lName && !!errors.lName}
+                helperText={touched.lName && errors.lName}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -108,14 +108,14 @@ const VolunteerProfileEdit = () => {
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
-                label="Message for Volunteers"
+                type="file"
+                label="Profile Picture"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.message}
-                name="message"
-                error={!!touched.message && !!errors.message}
-                helperText={touched.message && errors.message}
+                value={values.profilePic}
+                name="profilePic"
+                error={!!touched.profilePic && !!errors.profilePic}
+                helperText={touched.profilePic && errors.profilePic}
                 sx={{ gridColumn: "span 2", mt: "20px", paddingBottom: "20px" }}
               />
               <TextField
@@ -148,8 +148,8 @@ const phoneRegExp =
   /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
 
 const checkoutSchema = yup.object().shape({
-  restuarantName: yup.string().required("required"),
-  ownerName: yup.string().required("required"),
+  fName: yup.string().required("required"),
+
   email: yup.string().email("invalid email").required("required"),
   contact: yup
     .string()
@@ -157,16 +157,16 @@ const checkoutSchema = yup.object().shape({
     .required("required"),
   address: yup.string().required("required"),
   zipCode: yup.number().required("required"),
-  message: yup.string().required("required"),
 });
 const initialValues = {
-  restuarantName: "",
-  ownerName: "",
+  fName: "",
+  lName: "",
+
   email: "",
   contact: "",
   address: "",
   zipCode: "",
-  message: "",
+  profilePic: "",
 };
 
 export default VolunteerProfileEdit;

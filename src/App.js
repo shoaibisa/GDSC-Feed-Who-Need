@@ -1,12 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Sidebar from "./screens/partials/Sidebar.jsx";
 import Topbar from "./screens/partials/Topbar.jsx";
 import { ColorModeContext, useMode } from "./theme.js";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import LandingPage from "./screens/LandingPage.jsx";
-import UserDashboardVol from "./screens/dashboard/indexVolunteer";
-import UserProfileEdit from "./screens/forms/index.jsx";
+
 import NotFoundPage from "./screens/miscellaneous/404";
 import {
   Sign,
@@ -27,6 +25,8 @@ import VolunteerProfileEdit from "./screens/volunteer/ProfileEdit.jsx";
 import HandoutSelected from "./screens/volunteer/HandoutSelected.jsx";
 import VolunteerViewHandouts from "./screens/volunteer/ViewHandouts.jsx";
 import RestaurantViewHandouts from "./screens/restaurant/ViewHandout.jsx";
+import VolunteerHistory from "./screens/volunteer/History.jsx";
+import RestaurantHistory from "./screens/restaurant/History.jsx";
 
 function App() {
   let location = useLocation();
@@ -45,7 +45,7 @@ function App() {
           location.pathname === "/restaurant/profile" ||
           location.pathname === "/restaurant/request-handouts" ||
           location.pathname === "/restaurant/handouts" ||
-          location.pathname === "restaurant/history" ||
+          location.pathname === "/restaurant/history" ||
           isRestaurantView ? (
             <SidebarRestaurant />
           ) : (
@@ -56,6 +56,7 @@ function App() {
           location.pathname === "/volunteer/profile" ||
           location.pathname === "/volunteer/handouts" ||
           location.pathname === "/volunteer/histories" ||
+          location.pathname === "/volunteer/history" ||
           isVolunteerView ? (
             <SidebarVolunteer />
           ) : (
@@ -98,6 +99,10 @@ function App() {
                 path="/restaurant/handout/:id"
                 element={<RestaurantViewHandouts />}
               />
+              <Route
+                path="/restaurant/history"
+                element={<RestaurantHistory />}
+              />
               {/* Volunteers routes */}
               <Route
                 path="/volunteer/dashboard"
@@ -113,6 +118,7 @@ function App() {
                 path="/volunteer/handout/:id"
                 element={<VolunteerViewHandouts />}
               />
+              <Route path="/volunteer/history" element={<VolunteerHistory />} />
 
               {/* 404 route */}
               <Route path="*" element={<NotFoundPage />} />

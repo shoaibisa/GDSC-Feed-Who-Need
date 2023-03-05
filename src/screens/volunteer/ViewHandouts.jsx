@@ -44,17 +44,23 @@ const VolunteerViewHandouts = () => {
   return (
     <Box m="20px">
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="DASHBOARD" subtitle={randomQoute} />
+        <Header title="Handout" subtitle={randomQoute} />
       </Box>
-      <Box backgroundColor={colors.greenAccent[800]} m="0 30px" padding="10px">
+      <Box
+        backgroundColor={colors.greenAccent[800]}
+        m="0 30px"
+        padding="10px"
+        borderRadius="10px"
+        boxShadow="0 0 10px 0 rgba(0,0,0,0.5)"
+      >
         <Typography variant="h4" sx={{ color: colors.grey[100] }}>
-          Handout ID: {handoutId}
+          Handout ID: <strong> {handoutId}</strong>
         </Typography>
         <Typography variant="h4" sx={{ color: colors.grey[100] }}>
-          Restaurant Name : Park Central
+          Restaurant Name : <strong>Park Central</strong>
         </Typography>
         <Typography variant="h4" sx={{ color: colors.grey[100] }}>
-          Restaurant Owner Name : Mahi Akhtar
+          Restaurant Owner Name : <strong>Mahi Akhtar</strong>
         </Typography>
         <Typography variant="h4" sx={{ color: colors.grey[100] }}>
           Restaurant Contact : 9072354567
@@ -81,7 +87,7 @@ const VolunteerViewHandouts = () => {
       {isAccepted ? (
         <Box m="20px">
           {/* confirmation form  */}
-          <Typography variant="h4" sx={{ color: colors.grey[100] }}>
+          <Typography variant="h4" sx={{ color: colors.grey[100] }} m="20px">
             Enter Confirmation Data
           </Typography>
           <Formik
@@ -138,26 +144,51 @@ const VolunteerViewHandouts = () => {
                   />
                   {/* choose rating */}
 
-                  <Rating
-                    name="rating"
-                    value={values.rating}
-                    precision={0.5}
-                    getLabelText={getLabelText}
-                    onChange={handleChange}
-                    onChangeActive={(event, newHover) => {
-                      setHover(newHover);
-                    }}
-                    emptyIcon={
-                      <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                    }
-                  />
-                  {values.rating !== null && (
-                    <Box sx={{ ml: 2 }}>
-                      {labels[hover !== -1 ? hover : values.rating]}
-                    </Box>
-                  )}
+                  <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    backgroundColor={colors.greenAccent[600]}
+                    padding="10px"
+                    borderRadius="10px"
+                    boxShadow="0px 0px 10px 0px rgba(0,0,0,0.75)"
+                  >
+                    <Typography component="legend" variant="h4">
+                      Rating
+                    </Typography>
+                    <Rating
+                      name="rating"
+                      value={values.rating}
+                      precision={0.5}
+                      getLabelText={getLabelText}
+                      onChange={handleChange}
+                      onChangeActive={(event, newHover) => {
+                        setHover(newHover);
+                      }}
+                      emptyIcon={
+                        <StarIcon
+                          style={{ opacity: 0.55 }}
+                          fontSize="inherit"
+                        />
+                      }
+                    />
+                    {values.rating !== null && (
+                      <Box sx={{ ml: 2 }}>
+                        {labels[hover !== -1 ? hover : values.rating]}
+                      </Box>
+                    )}
+                  </Box>
                 </Box>
                 <Box display="flex" justifyContent="end" mt="20px">
+                  <Button
+                    onClick={() => setIsState(false)}
+                    color="warning"
+                    variant="contained"
+                    sx={{ mr: "20px" }}
+                  >
+                    Cancel Handout
+                  </Button>
+
                   <Button type="submit" color="secondary" variant="contained">
                     Confirm Handout
                   </Button>

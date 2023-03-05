@@ -19,15 +19,19 @@ const RestaurantViewHandouts = () => {
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="Volunteer Details" subtitle={randomQoute} />
       </Box>
-      <Box backgroundColor={colors.greenAccent[800]} m="0 30px" padding="10px">
+      <Box
+        backgroundColor={colors.greenAccent[800]}
+        m="0 30px"
+        padding="10px"
+        borderRadius="10px"
+        boxShadow="0 0 10px 0 rgba(0,0,0,0.5)"
+      >
         <Typography variant="h4" sx={{ color: colors.grey[100] }}>
           Handout ID: {handoutId}
         </Typography>
-        <Typography variant="h3" sx={{ color: colors.grey[100] }}>
-          Volunteer Rating
-        </Typography>
+
         <Typography variant="h4" sx={{ color: colors.grey[100] }}>
-          Volunteer Name : Shaj Akhtar
+          Volunteer Name : <strong>Shaj Akhtar</strong>
         </Typography>
 
         <Avatar
@@ -68,16 +72,18 @@ const RestaurantViewHandouts = () => {
             color: colors.grey[100],
             margin: "10px",
           }}
+          color="success"
         >
           Accept
         </Button>
         <Button
           variant="contained"
           sx={{
-            backgroundColor: colors.greenAccent[800],
+            backgroundColor: colors.redAccent[700],
             color: colors.grey[100],
             margin: "10px",
           }}
+          color="error"
         >
           Reject
         </Button>

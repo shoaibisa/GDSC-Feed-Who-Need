@@ -1,10 +1,10 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, Button, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
 import Rating from "@mui/material/Rating";
 
-const RestaurantHistory = () => {
+const VolunteerHistory = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -17,7 +17,6 @@ const RestaurantHistory = () => {
       expiry: "12/12/2021",
       packageType: "biodegradable",
       restaurant: "Park Central",
-      volunteer: "John Doe",
       zipaddress: "90139",
       address: "ahmadabad",
       noOfPeople: 7,
@@ -32,7 +31,6 @@ const RestaurantHistory = () => {
       expiry: "12/12/2021",
       packageType: "nonbiodegradable",
       restaurant: "Big Cafe",
-      volunteer: "Mahi Doe",
       zipaddress: "80139",
       address: "sangrur",
       noOfPeople: 1,
@@ -52,7 +50,6 @@ const RestaurantHistory = () => {
       noOfPeople: 12,
       contact: "9876543210",
       imgUrl: "/images/ch1.jpg",
-      volunteer: "John Doe",
       rating: 2.5,
     },
     {
@@ -66,7 +63,6 @@ const RestaurantHistory = () => {
       address: "longowal",
       contact: "9876543210",
       noOfPeople: 10,
-      volunteer: "John Doe",
       imgUrl: "/images/ch2.jpg",
       rating: 4.5,
     },
@@ -81,12 +77,11 @@ const RestaurantHistory = () => {
       flex: 1,
       cellClassName: "name-column--cell",
     },
-    { field: "volunteer", headerName: "Volunteer Name" },
+    { field: "restaurant", headerName: "Restaurant Name" },
+    { field: "expiry", headerName: "Delivered at" },
     { field: "contact", headerName: "Contact" },
 
     { field: "noOfPeople", headerName: "People can eat" },
-    { field: "expiry", headerName: "Delivered at" },
-
     {
       headerName: "Rating",
       field: "rating",
@@ -123,7 +118,7 @@ const RestaurantHistory = () => {
   ];
   return (
     <Box m="20px">
-      <Header title="HANDOUTS HISTORY" subtitle="Your Handouts History" />
+      <Header title="VOLUNTEER HISTORY" subtitle="Your Volunteer History" />
       <Box
         m="40px 0 0 0"
         height="70vh"
@@ -158,4 +153,4 @@ const RestaurantHistory = () => {
     </Box>
   );
 };
-export default RestaurantHistory;
+export default VolunteerHistory;

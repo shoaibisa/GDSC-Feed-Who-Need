@@ -108,14 +108,14 @@ const RestaurantProfileEdit = () => {
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
+                type="file"
                 label="Message for Volunteers"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.message}
+                value={values.profilePic}
                 name="message"
-                error={!!touched.message && !!errors.message}
-                helperText={touched.message && errors.message}
+                error={!!touched.profilePic && !!errors.profilePic}
+                helperText={touched.profilePic && errors.profilePic}
                 sx={{ gridColumn: "span 2", mt: "20px", paddingBottom: "20px" }}
               />
               <TextField
@@ -157,7 +157,6 @@ const checkoutSchema = yup.object().shape({
     .required("required"),
   address: yup.string().required("required"),
   zipCode: yup.number().required("required"),
-  message: yup.string().required("required"),
 });
 const initialValues = {
   restuarantName: "",
@@ -166,7 +165,7 @@ const initialValues = {
   contact: "",
   address: "",
   zipCode: "",
-  message: "",
+  profilePic: "",
 };
 
 export default RestaurantProfileEdit;
