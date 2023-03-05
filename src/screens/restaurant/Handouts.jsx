@@ -1,70 +1,121 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, Button, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { DataGrid } from "@mui/x-data-grid";
-import { mockDataTeam } from "../../data/mockData";
-import { AdminPanelSettingsOutlined } from "@mui/icons-material";
-import EmailIcon from "@mui/icons-material/Email";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import Header from "../../components/Header";
 
 const Handouts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const columns = [
-    { field: "id", headerName: "ID" },
+  const qoutesForHandouts = [
+    "The best way to find yourself is to lose yourself in the service of others.",
+    "Give like you have never given before, and you will receive like you have never received before.",
+    "Donate like your life depends on it, because it does.",
+    "Give to the needy, and you will be blessed.",
+    "The meaning of life is to find your gift. The purpose of life is to give it away.",
+  ];
+  const randomQoute =
+    qoutesForHandouts[Math.floor(Math.random() * qoutesForHandouts.length)];
+
+  //data coming from firebase here
+  const mydata = [
     {
-      field: "name",
-      headerName: "Name",
+      id: 1,
+      status: "accepted",
+      food: "cake and cookies",
+      expiry: "12/12/2021",
+      packageType: "nonbiodegradable",
+      noOfPeople: 7,
+    },
+    {
+      id: 2,
+      status: "accepted",
+      food: "cake and rice",
+      expiry: "12/12/2021",
+      packageType: "nonbiodegradable",
+      noOfPeople: 1,
+    },
+    {
+      id: 3,
+      status: "pending",
+      food: "cake and biryani",
+      expiry: "12/12/2021",
+      packageType: "biodegradable",
+      noOfPeople: 12,
+    },
+    {
+      id: 4,
+      status: "pending",
+      food: "salad and biryani",
+      expiry: "12/12/2021",
+      packageType: "nonbiodegradable",
+      noOfPeople: 10,
+    },
+  ];
+
+  const columns = [
+    { field: "id", headerName: "Handout ID" },
+    {
+      field: "status",
+      headerName: "Status",
+      renderCell: (params) => {
+        return params.row.status === "pending" ? (
+          <div>
+            <p color="warning">
+              <PendingActionsIcon /> Pending{" "}
+            </p>
+          </div>
+        ) : (
+          <div>
+            <p>
+              <CheckCircleOutlineIcon /> Accepted{" "}
+            </p>
+          </div>
+        );
+      },
+    },
+    {
+      field: "food",
+      headerName: "Food",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    { field: "noOfPeople", headerName: "People can eat" },
+    { field: "expiry", headerName: "Expiry" },
+    {
+      field: "packageType",
+      headerName: "Package Type",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "phone",
-      headerName: "Phone Number",
+      headerName: "Action",
+      field: "action",
+      width: 200,
       flex: 1,
-    },
-    {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "accessLevel",
-      headerName: "Access Level",
-      flex: 1,
-      renderCell: ({ row: { access } }) => {
-        return (
-          <Box
-            width="60%"
-            m="0 auto"
-            p="5px"
-            display="flex"
-            justifyContent="center"
-            backgroundColor={
-              access === "admin"
-                ? colors.greenAccent[600]
-                : access === "manager"
-                ? colors.greenAccent[700]
-                : colors.greenAccent[700]
-            }
-            borderRadius="4px"
-          >
-            {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-            {access === "manager" && <SecurityOutlinedIcon />}
-            {access === "user" && <LockOpenOutlinedIcon />}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-              {access}
-            </Typography>
-          </Box>
+      cellClassName: "action-column--cell",
+      renderCell: (params) => {
+        return params.row.status === "pending" ? (
+          <div>
+            <Button variant="contained" color="warning" onClick={() => {}}>
+              Abort
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => {}}
+              sx={{ ml: "10px" }}
+            >
+              Re Request
+            </Button>
+          </div>
+        ) : (
+          <div>
+            <Button variant="contained" color="info" onClick={() => {}}>
+              View
+            </Button>
+          </div>
         );
       },
     },
@@ -72,10 +123,10 @@ const Handouts = () => {
 
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
+      <Header title="Handouts Offered" subtitle={randomQoute} />
       <Box
         m="40px 0 0 0"
-        height="75vh"
+        height="70vh"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -102,7 +153,7 @@ const Handouts = () => {
           },
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        <DataGrid checkboxSelection rows={mydata} columns={columns} />
       </Box>
     </Box>
   );
