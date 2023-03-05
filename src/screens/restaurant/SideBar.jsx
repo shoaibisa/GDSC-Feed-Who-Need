@@ -12,7 +12,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import FoodBankOutlinedIcon from "@mui/icons-material/FoodBankOutlined";
 import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
-const Sidebar = () => {
+const SidebarRestaurant = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode); //selecting colors
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -113,7 +113,7 @@ const Sidebar = () => {
               icon={<HomeOutlinedIcone />}
               selected={selected}
               setSelected={setSelected}
-              path="/dashboard"
+              path="/restaurant/dashboard"
             />
             <Typography
               variant="h6"
@@ -141,14 +141,14 @@ const Sidebar = () => {
               icon={<FoodBankOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-              path="/handouts"
+              path="/restaurant/handouts"
             />
             <ItemsMenu
               title="Request Handouts"
               icon={<RestaurantMenuIcon />}
               selected={selected}
               setSelected={setSelected}
-              path="/request"
+              path="/restaurant/request-handouts"
             />
 
             <ItemsMenu
@@ -171,4 +171,4 @@ const Sidebar = () => {
     </Box>
   );
 };
-export default Sidebar;
+export default SidebarRestaurant;
