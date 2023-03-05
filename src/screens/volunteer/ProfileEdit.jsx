@@ -4,7 +4,7 @@ import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 
-const RestaurantProfileEdit = () => {
+const VolunteerProfileEdit = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const handleFormSubmit = (values) => {
@@ -44,7 +44,7 @@ const RestaurantProfileEdit = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Restaurant Name"
+                label="Your Name"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.restuarantName}
@@ -169,4 +169,4 @@ const initialValues = {
   message: "",
 };
 
-export default RestaurantProfileEdit;
+export default VolunteerProfileEdit;

@@ -21,10 +21,20 @@ import SidebarRestaurant from "./screens/restaurant/SideBar.jsx";
 import RestaurantDashboard from "./screens/restaurant/Dashboard.jsx";
 import RequestHandouts from "./screens/restaurant/RequestHandouts.jsx";
 import Handouts from "./screens/restaurant/Handouts.jsx";
+import SidebarVolunteer from "./screens/volunteer/SideBar.jsx";
+import VolunteerDashboard from "./screens/volunteer/Dashboard.jsx";
+import VolunteerProfileEdit from "./screens/volunteer/ProfileEdit.jsx";
+import HandoutSelected from "./screens/volunteer/HandoutSelected.jsx";
+import VolunteerViewHandouts from "./screens/volunteer/ViewHandouts.jsx";
+import RestaurantViewHandouts from "./screens/restaurant/ViewHandout.jsx";
 
 function App() {
   let location = useLocation();
   const [theme, colorMode] = useMode();
+  const pathName = location.pathname;
+  let isVolunteerView = pathName.includes("volunteer/handout");
+  let isRestaurantView = pathName.includes("restaurant/handout");
+
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
@@ -35,13 +45,22 @@ function App() {
           location.pathname === "/restaurant/profile" ||
           location.pathname === "/restaurant/request-handouts" ||
           location.pathname === "/restaurant/handouts" ||
-          location.pathname === "/volunteer/dashboard" ? (
+          location.pathname === "restaurant/history" ||
+          isRestaurantView ? (
             <SidebarRestaurant />
           ) : (
             ""
           )}
           {/* if volunteer routes */}
-          {location.pathname === "/volunteer/dashboard" ? <Sidebar /> : ""}
+          {location.pathname === "/volunteer/dashboard" ||
+          location.pathname === "/volunteer/profile" ||
+          location.pathname === "/volunteer/handouts" ||
+          location.pathname === "/volunteer/histories" ||
+          isVolunteerView ? (
+            <SidebarVolunteer />
+          ) : (
+            ""
+          )}
           <main className="content">
             <Topbar />
 
@@ -51,10 +70,7 @@ function App() {
                 path="/restaurant/dashboard"
                 element={<RestaurantDashboard />}
               />
-              <Route
-                path="/volunteer/dashboard"
-                element={<UserDashboardVol />}
-              />
+
               <Route path="/signup" element={<Sign />} />
 
               <Route
@@ -67,8 +83,6 @@ function App() {
               />
               <Route path="/restaurant/login" element={<SignIn />} />
               <Route path="/volunteer/login" element={<SignIn />} />
-              <Route path="/profile" element={<UserProfileEdit />} />
-              {/* <Route path="/p" element={<UserProfileEdit />} /> */}
 
               {/* Restaurant routes */}
               <Route
@@ -80,6 +94,26 @@ function App() {
                 element={<RequestHandouts />}
               />
               <Route path="/restaurant/handouts" element={<Handouts />} />
+              <Route
+                path="/restaurant/handout/:id"
+                element={<RestaurantViewHandouts />}
+              />
+              {/* Volunteers routes */}
+              <Route
+                path="/volunteer/dashboard"
+                element={<VolunteerDashboard />}
+              />
+              <Route
+                path="/volunteer/profile"
+                element={<VolunteerProfileEdit />}
+              />
+
+              <Route path="/volunteer/handouts" element={<HandoutSelected />} />
+              <Route
+                path="/volunteer/handout/:id"
+                element={<VolunteerViewHandouts />}
+              />
+
               {/* 404 route */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

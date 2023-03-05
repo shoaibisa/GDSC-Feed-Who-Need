@@ -90,6 +90,7 @@ const RequestHandouts = () => {
                 helperText={touched.noOfPeople && errors.noOfPeople}
                 sx={{ gridColumn: "span 2", mt: "20px", paddingBottom: "20px" }}
               />
+
               {/* radio */}
               <Typography variant="h5" sx={{ color: colors.grey[100] }}>
                 Packaging Type
@@ -132,7 +133,7 @@ const RequestHandouts = () => {
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
-                Create New User
+                Request Handouts
               </Button>
             </Box>
           </form>

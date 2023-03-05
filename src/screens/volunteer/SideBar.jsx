@@ -12,7 +12,10 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import FoodBankOutlinedIcon from "@mui/icons-material/FoodBankOutlined";
 import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
-const SidebarRestaurant = () => {
+import Rating from "@mui/material/Rating";
+import Stack from "@mui/material/Stack";
+
+const SidebarVolunteer = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode); //selecting colors
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -69,7 +72,7 @@ const SidebarRestaurant = () => {
                 ml="15px"
               >
                 <Typography variant="h4" color={colors.grey[100]}>
-                  RESTAURANT
+                  VOLUNTEER
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -85,7 +88,7 @@ const SidebarRestaurant = () => {
                   alt="user"
                   width="100px"
                   height="100px"
-                  src={`../../images/r1.avif`}
+                  src={`../../images/p1.jpeg`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
@@ -97,12 +100,19 @@ const SidebarRestaurant = () => {
                   sx={{ m: "10px 0 0 0 " }}
                   color={colors.grey[100]}
                 >
-                  PARKS CENTRAL RESTAURANT
+                  MAHI AKHTAR
                 </Typography>
-                {/* Restaurant Address */}
-                <Typography variant="h5" color={colors.greenAccent[400]}>
-                  <strong> p4, Main Street, Sangrur</strong>
-                </Typography>
+                {/* Volunteer Rating */}
+                <Box textAlign="center">
+                  <Stack spacing={1} sx={{ ml: "80px" }}>
+                    <Rating
+                      name="half-rating"
+                      defaultValue={2.5}
+                      precision={0.5}
+                      readOnly
+                    />
+                  </Stack>
+                </Box>
               </Box>
             </Box>
           )}
@@ -113,7 +123,7 @@ const SidebarRestaurant = () => {
               icon={<HomeOutlinedIcone />}
               selected={selected}
               setSelected={setSelected}
-              path="/restaurant/dashboard"
+              path="/volunteer/dashboard"
             />
             <Typography
               variant="h6"
@@ -127,7 +137,7 @@ const SidebarRestaurant = () => {
               icon={<ManageAccountsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-              path="/restaurant/profile"
+              path="/volunteer/profile"
             />
             <Typography
               variant="h6"
@@ -137,33 +147,26 @@ const SidebarRestaurant = () => {
               Handouts
             </Typography>
             <ItemsMenu
-              title="Handouts Offered"
+              title="Handouts Selected"
               icon={<FoodBankOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-              path="/restaurant/handouts"
+              path="/volunteer/handouts"
             />
             <ItemsMenu
-              title="Request Handouts"
+              title="History"
               icon={<RestaurantMenuIcon />}
               selected={selected}
               setSelected={setSelected}
-              path="/restaurant/request-handouts"
+              path="/volunteer/history"
             />
 
-            <ItemsMenu
-              title="History"
-              icon={<LocalShippingOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              path="/restaurant/history"
-            />
             <ItemsMenu
               title="Help"
               icon={<HelpOutlineIcone />}
               selected={selected}
               setSelected={setSelected}
-              path="/help"
+              path="/packaging"
             />
           </Box>
         </Menu>
@@ -171,4 +174,4 @@ const SidebarRestaurant = () => {
     </Box>
   );
 };
-export default SidebarRestaurant;
+export default SidebarVolunteer;

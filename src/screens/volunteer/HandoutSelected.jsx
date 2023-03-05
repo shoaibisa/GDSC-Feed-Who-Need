@@ -7,10 +7,11 @@ import Header from "../../components/Header";
 import { qoutesForHandouts } from "../../data/qoutes";
 import { useNavigate } from "react-router-dom";
 
-const Handouts = () => {
+const HandoutSelected = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const navigate = useNavigate();
+
   const randomQoute =
     qoutesForHandouts[Math.floor(Math.random() * qoutesForHandouts.length)];
 
@@ -21,7 +22,10 @@ const Handouts = () => {
       status: "accepted",
       food: "cake and cookies",
       expiry: "12/12/2021",
-      packageType: "nonbiodegradable",
+      packageType: "biodegradable",
+      restaurant: "Park Central",
+      zipaddress: "90139",
+      address: "ahmadabad",
       noOfPeople: 7,
     },
     {
@@ -30,6 +34,9 @@ const Handouts = () => {
       food: "cake and rice",
       expiry: "12/12/2021",
       packageType: "nonbiodegradable",
+      restaurant: "Big Cafe",
+      zipaddress: "80139",
+      address: "sangrur",
       noOfPeople: 1,
     },
     {
@@ -37,7 +44,10 @@ const Handouts = () => {
       status: "pending",
       food: "cake and biryani",
       expiry: "12/12/2021",
-      packageType: "biodegradable",
+      restaurant: "All Pizz",
+      packageType: "nonbiodegradable",
+      zipaddress: "90139",
+      address: "new delhi",
       noOfPeople: 12,
     },
     {
@@ -45,40 +55,27 @@ const Handouts = () => {
       status: "pending",
       food: "salad and biryani",
       expiry: "12/12/2021",
+      restaurant: "Park Central",
       packageType: "nonbiodegradable",
+      zipaddress: "10100",
+      address: "longowal",
       noOfPeople: 10,
     },
   ];
 
   const columns = [
     { field: "id", headerName: "Handout ID" },
-    {
-      field: "status",
-      headerName: "Status",
-      renderCell: (params) => {
-        return params.row.status === "pending" ? (
-          <div>
-            <p color="warning">
-              <PendingActionsIcon /> Pending{" "}
-            </p>
-          </div>
-        ) : (
-          <div>
-            <p>
-              <CheckCircleOutlineIcon /> Accepted{" "}
-            </p>
-          </div>
-        );
-      },
-    },
+
     {
       field: "food",
       headerName: "Food",
       flex: 1,
       cellClassName: "name-column--cell",
     },
+    { field: "restaurant", headerName: "Resataurant" },
     { field: "noOfPeople", headerName: "People can eat" },
     { field: "expiry", headerName: "Expiry" },
+
     {
       field: "packageType",
       headerName: "Package Type",
@@ -92,27 +89,13 @@ const Handouts = () => {
       flex: 1,
       cellClassName: "action-column--cell",
       renderCell: (params) => {
-        return params.row.status === "pending" ? (
-          <div>
-            <Button variant="contained" color="warning" onClick={() => {}}>
-              Abort
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => {}}
-              sx={{ ml: "10px" }}
-            >
-              Re Request
-            </Button>
-          </div>
-        ) : (
+        return (
           <div>
             <Button
               variant="contained"
               color="info"
               onClick={() => {
-                navigate(`/restaurant/handout/${params.row.id}`);
+                navigate(`/volunteer/handout/${params.id}`);
               }}
             >
               View
@@ -125,7 +108,7 @@ const Handouts = () => {
 
   return (
     <Box m="20px">
-      <Header title="Handouts Offered" subtitle={randomQoute} />
+      <Header title="Handouts Selected" subtitle={randomQoute} />
       <Box
         m="40px 0 0 0"
         height="70vh"
@@ -160,4 +143,4 @@ const Handouts = () => {
     </Box>
   );
 };
-export default Handouts;
+export default HandoutSelected;
