@@ -1,0 +1,129 @@
+.container_AboutUs_Upperpart {
+  z-index: 1;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 50px;
+}
+
+.container_AboutUs_Upperpart {
+  position: relative;
+  z-index: 1;
+
+}
+
+.About_Us_part1 {
+  padding-top: 8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.About_Uspart1techfest_logo {
+  display: flex;
+  flex-grow: 0.1;
+  border-right: 2px solid #fff;
+}
+
+.About_Uspart1techfest_logo img {
+  height: 250px;
+  width: 300px;
+}
+
+.About_Uspart1SLIET_logo img {
+  height: 260px;
+  width: 270px;
+}
+
+.About_Uspart1SLIET_logo {
+  display: flex;
+  justify-content: center;
+  flex-grow: 0.1;
+}
+
+
+@media screen and (max-width: 769px) {
+   .About_Uspart1techfest_logo img {
+    height: 200px;
+    width: 250px;
+  }
+
+  .About_Uspart1SLIET_logo img {
+    height: 210px;
+    width: 220px;
+  }
+}
+
+
+@media only screen and (max-width: 575px) {
+  .About_Uspart1techfest_logo img {
+    height: 170px;
+    width: 220px;
+  }
+
+  .About_Uspart1SLIET_logo img {
+    height: 180px;
+    width: 190px;
+  }
+}
+
+
+
+@media only screen and (max-width: 426px) {
+  .About_Uspart1techfest_logo img {
+    height: 130px;
+    width: 170px;
+    margin-right: 20px;
+  }
+
+  .About_Uspart1SLIET_logo img {
+    height: 140px;
+    width: 150px;
+    margin-left: 20px;
+  }
+
+
+}
+
+@media only screen and (max-width: 376px) {
+  .About_Us_part1 {
+    justify-content: center;
+    align-items: center;
+    padding-top: 4rem;
+    flex-direction: column;
+  }
+
+  .About_Uspart1techfest_logo {
+    border-right: none;
+    margin-bottom: 5%;
+  }
+
+  .About_Uspart1techfest_logo img {
+    height: auto;
+    width: 270px;
+    margin-right: 0;
+  }
+
+  .About_Uspart1SLIET_logo img {
+    margin-left: 0;
+    height: auto;
+    width: 250px;
+  }
+}
+
+
+@media only screen and (max-width: 281px) {
+  .About_Uspart1techfest_logo img {
+    height: 90px;
+    width: 140px;
+  }
+
+  .About_Uspart1SLIET_logo img {
+    height: 100px;
+    width: 110px;
+  }
+
+  .About_Uspart2_text {
+    width: 15rem;
+  }
+
+}

@@ -13,7 +13,7 @@ import Header from "../../components/Header";
 import { qoutesForHandouts } from "../../data/qoutes";
 import StatBox from "../../components/dashboard/StatBox";
 import Slider from "@mui/material/Slider";
-
+import NearbyHang from './NearbyHang';
 const marks = [
   {
     value: 0,
@@ -40,7 +40,57 @@ function valuetext(value) {
 function valueLabelFormat(value) {
   return marks.findIndex((mark) => mark.value === value) + 1;
 }
+const itemData = [
+  {
+    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+    title: 'Breakfast',
+    author: '@bkristastucchio',
+    rows: 2,
+    cols: 2,
+    featured: true,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+    title: 'Burger',
+    author: '@rollelflex_graphy726',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+    title: 'Camera',
+    author: '@helloimnik',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
+    title: 'Coffee',
+    author: '@nolanissac',
+    cols: 2,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
+    title: 'Hats',
+    author: '@hjrc33',
+    cols: 2,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
+    title: 'Honey',
+    author: '@arwinneil',
+    rows: 2,
+    cols: 2,
+    featured: true,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
+    title: 'Basketball',
+    author: '@tjdragotta',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
+    title: 'Fern',
+    author: '@katie_wasserman',
+  },
 
+];
 const VolunteerDashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -96,6 +146,7 @@ const VolunteerDashboard = () => {
   ];
 
   //for nearby
+  
   const columns = [
     { field: "id", headerName: "Handout ID" },
 
@@ -285,10 +336,12 @@ const VolunteerDashboard = () => {
         </Box>
       </Box>
       <Box m="20px">
+        <Box  className='hangout'>
         <Header title="Handouts Nearby Your Area" subtitle="" />
+        </Box>
         <Box
-          m="40px 0 0 0"
-          height="70vh"
+          m="40px 0"
+          height="auto"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
@@ -315,15 +368,18 @@ const VolunteerDashboard = () => {
             },
           }}
         >
-          <DataGrid checkboxSelection rows={mydata} columns={columns} />
+          <NearbyHang itemdata={itemData}/>
+          {/* <DataGrid checkboxSelection rows={mydata} columns={columns} /> */}
         </Box>
       </Box>
 
-      <Box m="20px">
-        <Header title="All Current Handouts" subtitle="" />
+      <Box m="20px" sx={{mb:15}} >
+        <Box className='hangout'>
+        <Header title="All Current Handouts" subtitle="" style={{textAlign:"center"}}/>
+        </Box>
         <Box
-          m="40px 0 0 0"
-          height="70vh"
+          m="40px 0"
+          height="auto"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
@@ -350,7 +406,8 @@ const VolunteerDashboard = () => {
             },
           }}
         >
-          <DataGrid checkboxSelection rows={mydata} columns={columns1} />
+           <NearbyHang itemdata={itemData}/>
+          {/* <DataGrid checkboxSelection rows={mydata} columns={columns1} /> */}
         </Box>
       </Box>
     </Box>

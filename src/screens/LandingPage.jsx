@@ -5,6 +5,7 @@ import FeaturesZigZag from './partials/FeaturesZigzag';
 import Testimonials from "./partials/Testimonials";
 import Footer from './partials/Footer'
 import Gallery from "./partials/Gallery";
+import TopLogos from './partials/TopLogos';
 const LandingPage = () => {
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
@@ -22,6 +23,7 @@ const LandingPage = () => {
       <HeroHome />
       <FeaturesBlocks />
       <FeaturesZigZag />
+      <TopLogos/>
        <Testimonials topDivider/>
       <Gallery/>
      {/* <Newsletter /> */}
