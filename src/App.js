@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Route, Routes } from "react-router-dom";
 import Topbar from "./screens/partials/Topbar.jsx";
 import { ColorModeContext, useMode } from "./theme.js";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import LandingPage from "./screens/LandingPage.jsx";
+import 'aos/dist/aos.css';
+import './style.css';
 
+import AOS from 'aos';
 import NotFoundPage from "./screens/miscellaneous/404";
 import {
   Sign,
@@ -34,6 +37,21 @@ function App() {
   const pathName = location.pathname;
   let isVolunteerView = pathName.includes("volunteer/handout");
   let isRestaurantView = pathName.includes("restaurant/handout");
+
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      disable: 'phone',
+      duration: 600,
+      easing: 'ease-out-sine',
+    });
+  });
+
+  useEffect(() => {
+    document.querySelector('html').style.scrollBehavior = 'auto'
+    window.scroll({ top: 0 })
+    document.querySelector('html').style.scrollBehavior = ''
+  }, [location.pathname]);  // triggered on route change
 
   return (
     <ColorModeContext.Provider value={colorMode}>

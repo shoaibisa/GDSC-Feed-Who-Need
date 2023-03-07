@@ -8,7 +8,7 @@ import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import { useState } from "react";
 import { Formik } from "formik";
-
+import './Style.css';
 import useMediaQuery from "@mui/material/useMediaQuery";
 const labels = {
   0.5: "Useless",
@@ -47,13 +47,62 @@ const VolunteerViewHandouts = () => {
         <Header title="Handout" subtitle={randomQoute} />
       </Box>
       <Box
+      className='volViewHang'
         backgroundColor={colors.greenAccent[800]}
-        m="0 30px"
+        m="0 auto"
         padding="10px"
         borderRadius="10px"
         boxShadow="0 0 10px 0 rgba(0,0,0,0.5)"
       >
-        <Typography variant="h4" sx={{ color: colors.grey[100] }}>
+      <Box  sx={{display:'flex',justifyContent:"space-between",width:"100%"}}>
+      <Box sx={{display:'flex',justifyContent:"space-between",flexDirection:"column",color: colors.grey[100],pl:5 }} className='volViewHangHead'>
+        <Typography variant="h4" sx={{display:"inline"}}>
+          Handout ID : 
+        </Typography>
+        <Typography variant="h4" sx={{display:"inline"}}>
+        Restaurant Name :
+        </Typography>
+        <Typography variant="h4" sx={{display:"inline"}}>
+        Restaurant Owner Name : 
+        </Typography>
+        <Typography variant="h4" sx={{display:"inline"}}>
+        Restaurant Contact : 
+        </Typography>
+        <Typography variant="h4" sx={{display:"inline"}}>
+        Food : 
+        </Typography>
+        <Typography variant="h4" sx={{display:"inline"}}>
+        Expiry :
+        </Typography>
+        <Typography variant="h4" sx={{display:"inline"}}>
+        Package Type : 
+        </Typography>
+        <Typography variant="h4" sx={{display:"inline"}}>
+        Zip Address :
+        </Typography>
+        <Typography variant="h4" sx={{display:"inline"}}>
+        Address : 
+        </Typography>
+        <Typography variant="h4" sx={{display:"inline"}}>
+        No of People : 
+        </Typography>
+        </Box>
+
+        <Box sx={{display:'flex',justifyContent:"space-between",flexDirection:"column",paddingRight:"5rem",textAlign:"left" }} className='volViewHangData'>
+        <strong> {handoutId}</strong>
+        <strong> Park Central</strong>
+        <strong> Mahi Akhtar</strong>
+        <strong>9072354567</strong>
+        <strong> cake and cookies</strong>
+        <strong>  12/12/2021</strong>
+        <strong> biodegradable</strong>
+        <strong> 0139</strong>
+        <strong> ahmadabad</strong>
+        <strong>7</strong>
+        </Box>
+      </Box>
+      
+        {/* <Typography variant="h4" sx={{ color: colors.grey[100] }}>
           Handout ID: <strong> {handoutId}</strong>
         </Typography>
         <Typography variant="h4" sx={{ color: colors.grey[100] }}>
@@ -82,7 +131,7 @@ const VolunteerViewHandouts = () => {
         </Typography>
         <Typography variant="h4" sx={{ color: colors.grey[100] }}>
           No of People : 7
-        </Typography>
+        </Typography> */}
       </Box>
       {isAccepted ? (
         <Box m="20px">

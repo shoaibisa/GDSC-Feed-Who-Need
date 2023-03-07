@@ -56,6 +56,7 @@ const SignUpRes = () => {
 			pinCode: pinCode,
 			phone: phone,
 		});
+		navigate('/restaurant/profile')
 	};
 
 	return (

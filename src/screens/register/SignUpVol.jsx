@@ -55,6 +55,7 @@ const SignUpVol = () => {
 			pinCode: pinCode,
 			phone: phone,
 		});
+		navigate('/volunteer/dashboard')
 	};
 
 	return (
@@ -184,7 +185,7 @@ const SignUpVol = () => {
 								onClick={PostData}
 								disabled={isLoading}
 							>
-								Sign In
+								Sign Up
 							</button>
 							{/* <Link to="/forgot-password">Forgot Password?</Link> */}
 						</div>

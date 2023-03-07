@@ -1,4 +1,14 @@
 
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* Additional styles */
+@import 'additional-styles/utility-patterns.css'; 
+@import 'additional-styles/range-slider.css'; 
+@import 'additional-styles/toggle-switch.css'; 
+@import 'additional-styles/theme.css'; 
+
+@import 'tailwindcss/utilities';
  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
 html,
 body,
