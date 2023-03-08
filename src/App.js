@@ -32,6 +32,7 @@ import VolunteerHistory from "./screens/volunteer/History.jsx";
 import RestaurantHistory from "./screens/restaurant/History.jsx";
 import ForgetPassword from "./components/ForgetPass/ForgetPassword.jsx";
 import ConfirmPassword from "./components/ForgetPass/ConfirmPassword.jsx";
+import Faq from "./components/Faq.jsx";
 
 function App() {
   let location = useLocation();
@@ -144,6 +145,7 @@ function App() {
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/forgetpassword" element={<ForgetPassword />} />
               <Route path="/confirmpassword" element={<ConfirmPassword />} />
+              <Route path="/faq" element={<Faq />} />
             </Routes>
           </main>
         </div>
