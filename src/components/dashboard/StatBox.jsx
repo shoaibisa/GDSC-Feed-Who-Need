@@ -1,14 +1,14 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import ProgressCircle from "./ProgressCircle";
-
+import '../../screens/volunteer/Style.css'
 const StatBox = ({ title, subtitle, icon, progress, increase }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   return (
-    <Box width="100%" m="0 30px">
-      <Box display="flex" justifyContent="space-between">
+    <Box width="250px"  height='130px' p="25px 10px" >
+      <Box display="flex" justifyContent="space-between" m='3 0'>
         <Box>
           {icon}
           <Typography

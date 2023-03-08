@@ -1,35 +1,36 @@
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
-import { DataGrid } from "@mui/x-data-grid";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import PendingActionsIcon from "@mui/icons-material/PendingActions";
-import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
+// import { DataGrid } from "@mui/x-data-grid";
+// import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+// import PendingActionsIcon from "@mui/icons-material/PendingActions";
+// import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
 import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
+// import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import DinnerDiningIcon from "@mui/icons-material/DinnerDining";
-import TrafficIcon from "@mui/icons-material/Traffic";
+// import TrafficIcon from "@mui/icons-material/Traffic";
 import Header from "../../components/Header";
 import { qoutesForHandouts } from "../../data/qoutes";
 import StatBox from "../../components/dashboard/StatBox";
 import Slider from "@mui/material/Slider";
 import NearbyHang from './NearbyHang';
+import './Style.css';
 const marks = [
   {
     value: 0,
-    label: "0°C",
+    label: "0",
   },
   {
     value: 20,
-    label: "20°C",
+    label: "20",
   },
   {
     value: 37,
-    label: "37°C",
+    label: "37",
   },
   {
     value: 100,
-    label: "100°C",
+    label: "100",
   },
 ];
 
@@ -239,20 +240,21 @@ const VolunteerDashboard = () => {
   return (
     <Box m="20px">
       {/* HEADER */}
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
         <Header title="DASHBOARD" subtitle={randomQoute} />
       </Box>
 
       {/* GRID & CHARTS */}
       <Box
-        display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="140px"
-        gap="20px"
+      height='auto'
+        display="flex"
+        flexWrap='wrap'
+        justifyContent='space-evenly'
+        alignItems='center'
+        className='dashboardCards'
       >
         {/* ROW 1 */}
         <Box
-          gridColumn="span 3"
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -271,7 +273,6 @@ const VolunteerDashboard = () => {
           />
         </Box>
         <Box
-          gridColumn="span 3"
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -290,7 +291,6 @@ const VolunteerDashboard = () => {
           />
         </Box>
         <Box
-          gridColumn="span 3"
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -309,13 +309,12 @@ const VolunteerDashboard = () => {
           />
         </Box>
         <Box
-          gridColumn="span 3"
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
           justifyContent="center"
         >
-          <Box sx={{ width: 260 }}>
+          <Box sx={{ width: 260 }} p="0 25px" m="26px 0">
             <Slider
               aria-label="Restricted values"
               defaultValue={20}

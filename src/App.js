@@ -85,10 +85,6 @@ function App() {
 
             <Routes>
               <Route path="/" element={<LandingPage />} />
-              <Route
-                path="/restaurant/dashboard"
-                element={<RestaurantDashboard />}
-              />
 
               <Route path="/signup" element={<Sign />} />
 
@@ -104,6 +100,10 @@ function App() {
               <Route path="/volunteer/login" element={<SignIn />} />
 
               {/* Restaurant routes */}
+              <Route
+                path="/restaurant/dashboard"
+                element={<RestaurantDashboard />}
+              />
               <Route
                 path="/restaurant/profile"
                 element={<RestaurantProfileEdit />}

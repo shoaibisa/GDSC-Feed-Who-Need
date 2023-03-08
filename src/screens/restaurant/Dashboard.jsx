@@ -23,14 +23,15 @@ const RestaurantDashboard = () => {
 
       {/* GRID & CHARTS */}
       <Box
-        display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="140px"
-        gap="20px"
+         height='auto'
+         display="flex"
+         flexWrap='wrap'
+         justifyContent='space-evenly'
+         alignItems='center'
+         className='dashboardCards'
       >
         {/* ROW 1 */}
         <Box
-          gridColumn="span 3"
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -49,7 +50,6 @@ const RestaurantDashboard = () => {
           />
         </Box>
         <Box
-          gridColumn="span 3"
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -68,7 +68,6 @@ const RestaurantDashboard = () => {
           />
         </Box>
         <Box
-          gridColumn="span 3"
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -87,7 +86,6 @@ const RestaurantDashboard = () => {
           />
         </Box>
         <Box
-          gridColumn="span 3"
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
