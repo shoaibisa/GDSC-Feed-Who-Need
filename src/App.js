@@ -30,6 +30,8 @@ import VolunteerViewHandouts from "./screens/volunteer/ViewHandouts.jsx";
 import RestaurantViewHandouts from "./screens/restaurant/ViewHandout.jsx";
 import VolunteerHistory from "./screens/volunteer/History.jsx";
 import RestaurantHistory from "./screens/restaurant/History.jsx";
+import ForgetPassword from "./components/ForgetPass/ForgetPassword.jsx";
+import ConfirmPassword from "./components/ForgetPass/ConfirmPassword.jsx";
 
 function App() {
   let location = useLocation();
@@ -140,6 +142,8 @@ function App() {
 
               {/* 404 route */}
               <Route path="*" element={<NotFoundPage />} />
+              <Route path="/forgetpassword" element={<ForgetPassword />} />
+              <Route path="/confirmpassword" element={<ConfirmPassword />} />
             </Routes>
           </main>
         </div>
