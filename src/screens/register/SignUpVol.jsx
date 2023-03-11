@@ -21,12 +21,22 @@ const SignUpVol = () => {
 	const [errorsMade, setErrorsMade] = useState();
 	const [fieldErr, setFieldErr] = useState(null);
 	const [mailErr, setMailErr] = useState(null);
-	const [passwordErr, setPasswordErr] = useState(null);
+  const [confirm_err, setConfirmErr] = useState(null);
+  const [passwordErr, setPasswordErr] = useState(null);
 	const navigate = useNavigate();
-
+	const handleConfirm = (value) => {
+		setC_Password(value);
+		if (!(value === password)) {
+		  setConfirmErr("Password should match");
+		} else {
+		  setConfirmErr(null);
+		  return true;
+		}
+		return false;
+	  };
 	const PostData = async (e) => {
 		e.preventDefault();
-		if (email.trim().length === 0 || password.trim().length === 0) {
+		if (email.trim().length === 0 || password.trim().length === 0 || c_password.trim().length === 0 || name.trim().length === 0 || address.trim().length === 0) {
 			setFieldErr('Field should not be empty');
 			setTimeout(() => {
 				setFieldErr(null);
@@ -40,6 +50,13 @@ const SignUpVol = () => {
 			}, 3000);
 			return;
 		}
+		if (password.length < 5) {
+			setPasswordErr("Atleast five characteres!");
+			setTimeout(() => {
+			  setPasswordErr(null);
+			}, 3000);
+			return;
+		  }
 		const user = {
 			email: email,
 			password: password,
@@ -53,7 +70,7 @@ const SignUpVol = () => {
 			email: email,
 			address: address,
 			pinCode: pinCode,
-			phone: phone,
+			phone: Number(phone),
 		});
 		navigate('/volunteer/dashboard')
 	};
@@ -75,7 +92,6 @@ const SignUpVol = () => {
 							<i>Thank You for joining us for a GOOD CAUSE!</i>
 						</p>
 						{fieldErr && <p style={{ color: 'red' }}>{fieldErr}</p>}
-						{password && <p style={{ color: 'red' }}>{passwordErr}</p>}
 						<label
 							htmlFor="name"
 							className={styles.signin__label}
@@ -86,7 +102,7 @@ const SignUpVol = () => {
 							type="text"
 							id="name"
 							name="name"
-							placeholder="Food Supplier"
+							placeholder="Food Distribtor"
 							value={name}
 							onChange={(e) => setName(e.target.value)}
 							required
@@ -149,6 +165,7 @@ const SignUpVol = () => {
 							onChange={(e) => setPinCode(e.target.value)}
 							name="pinCode"
 						/>
+						{password && <p style={{ color: 'red' }}>{passwordErr}</p>}
 						<label
 							htmlFor="password"
 							className={styles.signin__label}
@@ -163,6 +180,7 @@ const SignUpVol = () => {
 							required
 							autoComplete="off"
 						/>
+              {{ confirm_err } && <p style={{ color: "red" }}>{confirm_err}</p>}
 						<label
 							htmlFor="password"
 							className={styles.signin__label}
@@ -172,7 +190,7 @@ const SignUpVol = () => {
 						<input
 							placeholder="Enter your Password"
 							value={c_password}
-							onChange={(e) => setC_Password(e.target.value)}
+							onChange={(e) => handleConfirm(e.target.value)}
 							type="password"
 							required
 							autoComplete="off"
