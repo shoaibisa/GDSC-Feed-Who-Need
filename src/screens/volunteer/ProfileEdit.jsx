@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -105,19 +105,30 @@ const VolunteerProfileEdit = () => {
                 helperText={touched.zipCode && errors.zipCode}
                 sx={{ gridColumn: "span 2", mt: "20px", paddingBottom: "20px" }}
               />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="file"
-                label="Profile Picture"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.profilePic}
-                name="profilePic"
-                error={!!touched.profilePic && !!errors.profilePic}
-                helperText={touched.profilePic && errors.profilePic}
-                sx={{ gridColumn: "span 2", mt: "20px", paddingBottom: "20px" }}
-              />
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                sx={{
+                  gridColumn: "span 2",
+                  mt: "20px",
+                  paddingBottom: "20px",
+                }}
+              >
+                <Typography ml="5px">Upload Pic</Typography>
+                <TextField
+                  fullWidth
+                  variant="filled"
+                  type="file"
+                  label=""
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.profilePic}
+                  name="profilePic"
+                  error={!!touched.profilePic && !!errors.profilePic}
+                  helperText={touched.profilePic && errors.profilePic}
+                />
+              </Box>
               <TextField
                 fullWidth
                 variant="filled"
@@ -146,6 +157,7 @@ const VolunteerProfileEdit = () => {
 
 const phoneRegExp =
   /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+const pinCodeRegExp = /^[1-9][0-9]{5}$/;
 
 const checkoutSchema = yup.object().shape({
   fName: yup.string().required("required"),
@@ -154,9 +166,16 @@ const checkoutSchema = yup.object().shape({
   contact: yup
     .string()
     .matches(phoneRegExp, "Phone number is not valid")
-    .required("required"),
+    .required("required")
+    .required("required")
+    .min(10, "Phone number is not valid")
+    .max(10, "Phone number is not valid"),
   address: yup.string().required("required"),
-  zipCode: yup.number().required("required"),
+  zipCode: yup
+    .string()
+    .matches(pinCodeRegExp, "Pincode is not valid")
+    .required("required"),
+  profilePic: yup.string().required("required"),
 });
 const initialValues = {
   fName: "",

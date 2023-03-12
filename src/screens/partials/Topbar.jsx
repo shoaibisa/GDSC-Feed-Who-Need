@@ -53,9 +53,9 @@ const Topbar = () => {
         <IconButton>
           <NotificationsOutlined />
         </IconButton>
-        <IconButton>
+        {/* <IconButton>
           <SettingsOutlined />
-        </IconButton>
+        </IconButton> */}
         <IconButton>
           <PersonOutline />
         </IconButton>

@@ -64,19 +64,26 @@ const RequestHandouts = () => {
                 sx={{ gridColumn: "span 4" }}
               />
 
-              <TextField
-                fullWidth
-                variant="filled"
-                type="date"
-                label="Date of Expiry"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.date}
-                name="date"
-                error={!!touched.date && !!errors.date}
-                helperText={touched.date && errors.date}
+              <Box
                 sx={{ gridColumn: "span 2", mt: "20px" }}
-              />
+                display="flex"
+                alignContent="center"
+                justifyContent="center"
+              >
+                <Typography>Date of Expiry</Typography>
+                <TextField
+                  fullWidth
+                  variant="filled"
+                  type="date"
+                  label=""
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.date}
+                  name="date"
+                  error={!!touched.date && !!errors.date}
+                  helperText={touched.date && errors.date}
+                />
+              </Box>
               <TextField
                 fullWidth
                 variant="filled"
@@ -99,7 +106,7 @@ const RequestHandouts = () => {
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  background: colors.grey[800],
+                  background: "#8a8989",
 
                   borderRadius: "10px",
                   padding: "10px",
@@ -130,6 +137,30 @@ const RequestHandouts = () => {
                   </RadioGroup>
                 </FormControl>
               </Box>
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                sx={{
+                  gridColumn: "span 2",
+                  mt: "20px",
+                  paddingBottom: "20px",
+                }}
+              >
+                <Typography ml="5px">Upload Pic</Typography>
+                <TextField
+                  fullWidth
+                  variant="filled"
+                  type="file"
+                  label=""
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.foodPic}
+                  name="foodPic"
+                  error={!!touched.foodPic && !!errors.foodPic}
+                  helperText={touched.foodPic && errors.foodPic}
+                />
+              </Box>
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
@@ -145,7 +176,9 @@ const RequestHandouts = () => {
 
 const checkoutSchema = yup.object().shape({
   food: yup.string().required("required"),
-
+  packagingType: yup.string().required("required"),
+  date: yup.string().required("required"),
+  foodPic: yup.string().required("required"),
   noOfPeople: yup.number().required("required"),
 });
 const initialValues = {
@@ -153,6 +186,7 @@ const initialValues = {
   packagingType: "",
   date: "",
   noOfPeople: "",
+  foodPic: "",
 };
 
 export default RequestHandouts;
