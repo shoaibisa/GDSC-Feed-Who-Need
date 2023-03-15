@@ -18,12 +18,8 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 // import Loader from '../Loader/Loader.js';
 
 const SignUpRes = () => {
-	// const authContext = useContext(AuthContext);
 	const [email, setEmail] = useState('');
 	const [name, setName] = useState('');
-	// const [address, setAddress] = useState('');
-	// const [phone, setPhone] = useState('');
-	// const [pinCode, setPinCode] = useState('');
 	const [password, setPassword] = useState('');
 	const [c_password, setC_Password] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
@@ -83,6 +79,10 @@ const SignUpRes = () => {
 			name: name,
 			email: email,
 			password: password,
+			ownerName: '',
+			contact: '',
+			address: '',
+			zipCode: '',
 			timeStamp: serverTimestamp(),
 		});
 		navigate('/');
