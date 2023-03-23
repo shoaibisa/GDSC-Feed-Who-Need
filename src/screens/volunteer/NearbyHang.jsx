@@ -1,16 +1,19 @@
-import * as React from 'react';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
+import * as React from "react";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from "@mui/material/ImageListItemBar";
+import ListSubheader from "@mui/material/ListSubheader";
+import IconButton from "@mui/material/IconButton";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-export default function NearbyHang({itemdata}) {
+export default function NearbyHang({ itemdata }) {
   return (
-    <ImageList sx={{ width: "70%", height: "600px" }} className="max-w-6xl mx-auto px-4 sm:px-6 relative">
+    <ImageList
+      sx={{ width: "70%", height: "600px" }}
+      className="max-w-6xl mx-auto px-4 sm:px-6 relative"
+    >
       <ImageListItem key="Subheader" cols={2}>
-        <ListSubheader component="div">December</ListSubheader>
+        <ListSubheader component="div">Handouts</ListSubheader>
       </ImageListItem>
       {itemdata.map((item) => (
         <ImageListItem key={item.img}>
@@ -25,10 +28,10 @@ export default function NearbyHang({itemdata}) {
             subtitle={item.author}
             actionIcon={
               <IconButton
-                sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                 aria-label={`info about ${item.title}`}
               >
-                <InfoIcon />
+                <AddShoppingCartIcon />
               </IconButton>
             }
           />
@@ -37,4 +40,3 @@ export default function NearbyHang({itemdata}) {
     </ImageList>
   );
 }
-

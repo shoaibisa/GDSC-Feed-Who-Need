@@ -8,8 +8,10 @@ import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import { useState } from "react";
 import { Formik } from "formik";
-import './Style.css';
+import "./Style.css";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import GoogleMapReact from "google-map-react";
+
 const labels = {
   0.5: "Useless",
   1: "Useless+",
@@ -47,61 +49,86 @@ const VolunteerViewHandouts = () => {
         <Header title="Handout" subtitle={randomQoute} />
       </Box>
       <Box
-      className='volViewHang'
+        className="volViewHang"
         backgroundColor={colors.greenAccent[800]}
         m="0 auto"
         padding="10px"
         borderRadius="10px"
         boxShadow="0 0 10px 0 rgba(0,0,0,0.5)"
       >
-      <Box  sx={{display:'flex',justifyContent:"space-between",width:"100%"}}>
-      <Box sx={{display:'flex',justifyContent:"space-between",flexDirection:"column",color: colors.grey[100],pl:5 }} className='volViewHangHead'>
-        <Typography variant="h4" sx={{display:"inline"}}>
-          Handout ID : 
-        </Typography>
-        <Typography variant="h4" sx={{display:"inline"}}>
-        Restaurant Name :
-        </Typography>
-        <Typography variant="h4" sx={{display:"inline"}}>
-        Restaurant Owner Name : 
-        </Typography>
-        <Typography variant="h4" sx={{display:"inline"}}>
-        Restaurant Contact : 
-        </Typography>
-        <Typography variant="h4" sx={{display:"inline"}}>
-        Food : 
-        </Typography>
-        <Typography variant="h4" sx={{display:"inline"}}>
-        Expiry :
-        </Typography>
-        <Typography variant="h4" sx={{display:"inline"}}>
-        Package Type : 
-        </Typography>
-        <Typography variant="h4" sx={{display:"inline"}}>
-        Zip Address :
-        </Typography>
-        <Typography variant="h4" sx={{display:"inline"}}>
-        Address : 
-        </Typography>
-        <Typography variant="h4" sx={{display:"inline"}}>
-        No of People : 
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexDirection: "column",
+              color: colors.grey[100],
+              pl: 5,
+            }}
+            className="volViewHangHead"
+          >
+            <Typography variant="h4" sx={{ display: "inline" }}>
+              Handout ID :
+            </Typography>
+            <Typography variant="h4" sx={{ display: "inline" }}>
+              Restaurant Name :
+            </Typography>
+            <Typography variant="h4" sx={{ display: "inline" }}>
+              Restaurant Owner Name :
+            </Typography>
+            <Typography variant="h4" sx={{ display: "inline" }}>
+              Restaurant Contact :
+            </Typography>
+            <Typography variant="h4" sx={{ display: "inline" }}>
+              Food :
+            </Typography>
+            <Typography variant="h4" sx={{ display: "inline" }}>
+              Expiry :
+            </Typography>
+            <Typography variant="h4" sx={{ display: "inline" }}>
+              Package Type :
+            </Typography>
+            <Typography variant="h4" sx={{ display: "inline" }}>
+              Zip Address :
+            </Typography>
+            <Typography variant="h4" sx={{ display: "inline" }}>
+              Address :
+            </Typography>
+            <Typography variant="h4" sx={{ display: "inline" }}>
+              No of People :
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexDirection: "column",
+              paddingRight: "5rem",
+              textAlign: "left",
+            }}
+            className="volViewHangData"
+          >
+            <strong> {handoutId}</strong>
+            <strong> Park Central</strong>
+            <strong> Mahi Akhtar</strong>
+            <strong>9072354567</strong>
+            <strong> cake and cookies</strong>
+            <strong> 12/12/2021</strong>
+            <strong> biodegradable</strong>
+            <strong> 0139</strong>
+            <strong> ahmadabad</strong>
+            <strong>7</strong>
+          </Box>
+          {/* Adding google Map */}
         </Box>
 
-        <Box sx={{display:'flex',justifyContent:"space-between",flexDirection:"column",paddingRight:"5rem",textAlign:"left" }} className='volViewHangData'>
-        <strong> {handoutId}</strong>
-        <strong> Park Central</strong>
-        <strong> Mahi Akhtar</strong>
-        <strong>9072354567</strong>
-        <strong> cake and cookies</strong>
-        <strong>  12/12/2021</strong>
-        <strong> biodegradable</strong>
-        <strong> 0139</strong>
-        <strong> ahmadabad</strong>
-        <strong>7</strong>
-        </Box>
-      </Box>
-      
         {/* <Typography variant="h4" sx={{ color: colors.grey[100] }}>
           Handout ID: <strong> {handoutId}</strong>
         </Typography>
@@ -132,7 +159,37 @@ const VolunteerViewHandouts = () => {
         <Typography variant="h4" sx={{ color: colors.grey[100] }}>
           No of People : 7
         </Typography> */}
+        <Box sx={{ mt: "20px" }}>
+          <Typography variant="h4" sx={{ color: colors.grey[100] }}>
+            Restaurant Location :
+          </Typography>
+          {/* <GoogleMapReact
+              bootstrapURLKeys={{
+                key: "AIzaSyCRvcWcAhgvsIPDRRW00Kg_DP1-2XNxkPc",
+              }}
+              defaultCenter={{ lat: 40.7128, lng: -74.006 }}
+              defaultZoom={10}
+            >
+              // Add any additional components or overlays here
+            </GoogleMapReact> */}
+          {/* Image for map. waiting for free api */}
+          <img
+            src="/images/map.png"
+            alt="map"
+            style={{ width: "70%", height: "70%" }}
+          />
+          {/* <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117475.8960256221!2d72.49657286403485!3d23.05599757351688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e818311a637c1%3A0x8274a9ecc4f70d70!2sAAGRAH%20RESTAURANT!5e0!3m2!1sen!2sin!4v1679244291918!5m2!1sen!2sin"
+              width="600"
+              height="450"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe> */}
+        </Box>
       </Box>
+
       {isAccepted ? (
         <Box m="20px">
           {/* confirmation form  */}

@@ -199,12 +199,32 @@ export const ColorModeContext = createContext({
 });
 
 export const useMode = () => {
-  const [mode, setMode] = useState("dark");
+  const storedData = localStorage.getItem("myAppData");
+  const defaultData = {
+    theme: "light",
+  };
+  if (!storedData) {
+    const prefersDarkTheme =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    defaultData.theme = prefersDarkTheme ? "dark" : "light";
+    localStorage.setItem("myAppData", JSON.stringify(defaultData));
+  }
+  const myAppData = JSON.parse(storedData);
+
+  const themeData = myAppData.theme;
+  const [mode, setMode] = useState(themeData);
 
   const colorMode = useMemo(
     () => ({
-      toggleColorMode: () =>
-        setMode((prev) => (prev === "light" ? "dark" : "light")),
+      toggleColorMode: () => {
+        console.log("toggleColorMode 1", mode);
+        const newMode = mode === "dark" ? "light" : "dark";
+        console.log("toggleColorMode", newMode);
+
+        setMode(newMode);
+        localStorage.setItem("myAppData", JSON.stringify({ theme: newMode }));
+      },
     }),
     []
   );

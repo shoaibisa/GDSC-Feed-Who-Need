@@ -7,10 +7,22 @@ import Header from "../../components/Header";
 import { qoutesForHandouts } from "../../data/qoutes";
 import { useNavigate } from "react-router-dom";
 
+// Define a function to be executed once the Google Maps API has finished loading
+
+// Load the Google Maps API using loadjs and provide the initMap function as a callback
+
 const HandoutSelected = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  // useEffect(() => {
+  //   // Load the Google Maps API using loadjs and provide the initMap function as a callback
+  //   loadjs(
+  //     "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap",
+  //     "google-maps"
+  //   );
+  // }, []);
 
   const randomQoute =
     qoutesForHandouts[Math.floor(Math.random() * qoutesForHandouts.length)];
