@@ -1,17 +1,26 @@
 # Feed Who Need
 
-- This is a project developed by Our Team for GDSC to help connect people who have excess food with those who are in need of it. This project aims to reduce food waste and ensure that no one goes hungry.
+- 'Feed Who Need' aims to connect remote volunteers with restaurants to prevent food waste and feed hungry people. The project promotes the use of biodegradable packaging to tackle the issue of climate change. The platform will reward volunteers with points for every food donation, which can be later redeemed for shoppivouchers.ng 
 
 
 ## Getting Started
+
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-Prerequisites
-Node.js and npm installed on your machine
-MongoDB installed on your machine
-Installing
+Prerequisites : 
+<ul>
+<li>Node.js</li>
+<li>npm</li>
+<li>MongoDB (optional)</li>
+</ul>
+
+Run Following commands for Installing
 
 ```
+git clone shoaibisa/GDSC-Feed-Who-Need
+//It clones repository into local machine
 npm i 
+//It installs necessary packages used in project
 npm start
+//Start's the site on localhost.
 ```
