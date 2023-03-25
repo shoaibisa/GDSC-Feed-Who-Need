@@ -160,33 +160,16 @@ const VolunteerViewHandouts = () => {
           No of People : 7
         </Typography> */}
         <Box sx={{ mt: "20px" }}>
+          {/* Waiting for gmap javascript api */}
           <Typography variant="h4" sx={{ color: colors.grey[100] }}>
             Restaurant Location :
           </Typography>
-          {/* <GoogleMapReact
-              bootstrapURLKeys={{
-                key: "AIzaSyCRvcWcAhgvsIPDRRW00Kg_DP1-2XNxkPc",
-              }}
-              defaultCenter={{ lat: 40.7128, lng: -74.006 }}
-              defaultZoom={10}
-            >
-              // Add any additional components or overlays here
-            </GoogleMapReact> */}
-          {/* Image for map. waiting for free api */}
+
           <img
             src="/images/map.png"
             alt="map"
             style={{ width: "70%", height: "70%" }}
           />
-          {/* <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117475.8960256221!2d72.49657286403485!3d23.05599757351688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e818311a637c1%3A0x8274a9ecc4f70d70!2sAAGRAH%20RESTAURANT!5e0!3m2!1sen!2sin!4v1679244291918!5m2!1sen!2sin"
-              width="600"
-              height="450"
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe> */}
         </Box>
       </Box>
 
