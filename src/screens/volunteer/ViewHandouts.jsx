@@ -69,11 +69,61 @@ const VolunteerViewHandouts = () => {
               justifyContent: "space-between",
               flexDirection: "column",
               color: colors.grey[100],
-              pl: 5,
+              width:"100%",
+              fontSize:"18px"
             }}
             className="volViewHangHead"
           >
-            <Typography variant="h4" sx={{ display: "inline" }}>
+            <table className="volHangoutTable" style={{
+              width:"70%",
+              margin:"0 auto",
+              padding:"10px"
+            }}>
+              <thead style={{textAlign:"center",fontSize:"20px"}}>Hangouts Details</thead>
+             <tbody>
+             <tr>
+                <th>Hangout id</th>
+                <td>{handoutId}</td>
+              </tr>
+              <tr>
+                <th>Restaurant Name:</th>
+                <td>Park Central</td>
+              </tr>
+              <tr>
+                <th> Restaurant Owner Name</th>
+                <td>Mahi Akhtar</td>
+              </tr>
+              <tr>
+                <th>Restaurant Contact</th>
+                <td>9072354567</td>
+              </tr>
+              <tr>
+                <th>Food</th>
+                <td>cake and cookies</td>
+              </tr>
+              <tr>
+                <th>Expiry</th>
+                <td>12/12/2021</td>
+              </tr>
+              <tr>
+                <th>Package Type</th>
+                <td>biodegradable</td>
+              </tr>
+              <tr>
+                <th>Zip Address</th>
+                <td>0139</td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td>ahmadabad</td>
+              </tr> 
+              <tr>
+                <th>No of People</th>
+                <td>7</td>
+              </tr>          
+             </tbody>
+            </table>
+            {/* <Typography variant="h4" sx={{ display: "inline" }}>
               Handout ID :
             </Typography>
             <Typography variant="h4" sx={{ display: "inline" }}>
@@ -102,9 +152,9 @@ const VolunteerViewHandouts = () => {
             </Typography>
             <Typography variant="h4" sx={{ display: "inline" }}>
               No of People :
-            </Typography>
+            </Typography> */}
           </Box>
-
+{/* 
           <Box
             sx={{
               display: "flex",
@@ -125,7 +175,7 @@ const VolunteerViewHandouts = () => {
             <strong> 0139</strong>
             <strong> ahmadabad</strong>
             <strong>7</strong>
-          </Box>
+          </Box> */}
           {/* Adding google Map */}
         </Box>
 
@@ -159,16 +209,16 @@ const VolunteerViewHandouts = () => {
         <Typography variant="h4" sx={{ color: colors.grey[100] }}>
           No of People : 7
         </Typography> */}
-        <Box sx={{ mt: "20px" }}>
+        <Box sx={{ pl:5 }}>
           {/* Waiting for gmap javascript api */}
-          <Typography variant="h4" sx={{ color: colors.grey[100] }}>
+          <Typography variant="h4" sx={{ color: colors.grey[100],textAlign:"center",p:1,textDecoration:"underline" }}>
             Restaurant Location :
           </Typography>
 
           <img
             src="/images/map.png"
             alt="map"
-            style={{ width: "70%", height: "70%" }}
+            style={{ width: "70%", height: "70%",margin:"10px auto 20px auto", }}
           />
         </Box>
       </Box>

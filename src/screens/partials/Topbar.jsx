@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Box, IconButton, useTheme } from '@mui/material';
+import { Box, IconButton, Tooltip, useTheme } from '@mui/material';
 import { ColorModeContext, tokens } from '../../theme';
 import { useNavigate } from 'react-router-dom';
 
@@ -51,6 +51,7 @@ const Topbar = () => {
 			</Box>
 			{/* Icon */}
 			<Box display="flex">
+				<Tooltip title="Color Mode">
 				<IconButton onClick={colorMode.toggleColorMode}>
 					{theme.palette.mode === 'dark' ? (
 						<DarkModeOutlined />
@@ -59,6 +60,7 @@ const Topbar = () => {
 					)}
 					{/* <LightModeOutlined /> */}
 				</IconButton>
+				</Tooltip>
 				<IconButton>
 					<NotificationsOutlined />
 				</IconButton>
