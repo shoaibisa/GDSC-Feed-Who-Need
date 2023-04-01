@@ -1,4 +1,4 @@
-import { Container, Box, Button } from '@mui/material'
+import { Container, Box} from '@mui/material'
 import React from 'react'
 import Header from './Header'
 import Accordion from '@mui/material/Accordion';
@@ -6,12 +6,12 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Link } from 'react-router-dom';
+
 function Faq() {
   return (
     <Container width='100%' height='100%' display="flex"  justifyContent="center"
     alignItem='center' sx={{mt:3}}  >
-     
+
        <Header
        sx={{mt:5}}
          title="Have some Questions?"
