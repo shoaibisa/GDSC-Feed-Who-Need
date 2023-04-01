@@ -4,21 +4,21 @@ import Popover from "@mui/material/Popover";
 import Sign from "../register/Sign";
 import SigninAsk from "../register/SigninAsk";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
-import { Typography, Button } from "@mui/material";
+// import { Typography, Button } from "@mui/material"; // Cleaning_up_Code_errors
 function HeroHome() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  //const [anchorEl, setAnchorEl] = React.useState(null);
+  // Cleaning_up_Code_errors
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+  // Cleaning_up_Code_errors
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  //const open = Boolean(anchorEl);  // Cleaning_up_Code_errors
+  //const id = open ? "simple-popover" : undefined; // Cleaning_up_Code_errors
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
@@ -64,8 +64,8 @@ function HeroHome() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h1 mb-4" data-aos="fade-up">
-              We can't live only for{" "}
-              <span className="text-color-primary">Ourselves</span>
+              We can't live only for
+              <span className="text-color-primary"> Ourselves</span>
             </h1>
             <p
               className="text-xl text-gray-400 mb-8"
@@ -195,7 +195,7 @@ function HeroHome() {
               <div className="relative pb-9/16">
                 <iframe
                   className="absolute w-full h-full"
-                  src="https://player.vimeo.com/video/174002812"
+                  src="https://player.vimeo.com/video/792499168"
                   title="Video"
                   allowFullScreen
                 ></iframe>

@@ -24,7 +24,7 @@ const LandingPage = () => {
       <FeaturesBlocks />
       <FeaturesZigZag />
       <TopLogos/>
-       <Testimonials topDivider/>
+      <Testimonials topDivider/>
       <Gallery/>
      {/* <Newsletter /> */}
     </main>
