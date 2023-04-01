@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import React, { useEffect/*, useContext*/ } from 'react';
+import { Route, Routes /*,Navigate*/} from 'react-router-dom';
 import Topbar from './screens/partials/Topbar.jsx';
 import { ColorModeContext, useMode } from './theme.js';
 import { CssBaseline, ThemeProvider } from '@mui/material';
@@ -33,7 +33,7 @@ import RestaurantHistory from './screens/restaurant/History.jsx';
 import ForgetPassword from './components/ForgetPass/ForgetPassword.jsx';
 import ConfirmPassword from './components/ForgetPass/ConfirmPassword.jsx';
 import Faq from './components/Faq.jsx';
-import { AuthContext } from './context/AuthContext';
+//import { AuthContext } from './context/AuthContext';
 
 function App() {
 	let location = useLocation();
@@ -42,11 +42,13 @@ function App() {
 	let isVolunteerView = pathName.includes('volunteer/handout');
 	let isRestaurantView = pathName.includes('restaurant/handout');
 
-	const { currentUser } = useContext(AuthContext);
+	// Cleaning_up_Code_errors
+	// const { currentUser } = useContext(AuthContext);
 
-	const RequireAuth = ({ children }) => {
-		return currentUser ? children : <Navigate to="/" />;
-	};
+
+	// const RequireAuth = ({ children }) => {
+	// 	return currentUser ? children : <Navigate to="/" />;
+	// };
 
 	useEffect(() => {
 		AOS.init({
