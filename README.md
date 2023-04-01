@@ -15,7 +15,7 @@ Prerequisites :
 </ul>
 
 Run Following commands for Installing
-
+(Note : App may take few seconds to load. Please wait humbly 🙂)
 ```
 git clone shoaibisa/GDSC-Feed-Who-Need
 //It clones repository into local machine
