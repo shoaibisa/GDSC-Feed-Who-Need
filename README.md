@@ -24,3 +24,26 @@ npm i
 npm start
 //Start's the site on localhost.
 ```
+<hr>
+While performing Evaluation, if there is any backend link redirection issue, you can use the following links. <br>
+(Reason for facing such issue : The development is under progress on regular bases.)
+
+
+<table align='center'>
+  </tr>
+    <th>Link</th>
+    <th>Description<br>(Assuming your default port number is 3000)</th>
+  </tr>
+  <tr>
+    <td><a href="http://localhost:3000/" target="_blank">http://localhost:3000/</a></td>
+    <td>HomePage/LandingPage</td>
+  </tr>
+  <tr>
+    <td><a href="http://localhost:3000/volunteer/dashboard" target="_blank">http://localhost:3000/volunteer/dashboard</a></td>
+    <td>Volunteer Dashboard</td>
+  </tr>
+  <tr>
+    <td><a href="http://localhost:3000/restaurant/dashboard" target="_blank">http://localhost:3000/restaurant/dashboard</a></td>
+    <td>Restaurant Dashboard</td>
+  </tr>
+</table>
