@@ -24,12 +24,11 @@ function Faq() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Accordion 1</Typography>
+          <Typography>My data will be secured ?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Don't worry, we never share user credentials with any of the organizations / restaurants.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -39,12 +38,11 @@ function Faq() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography>Accordion 2</Typography>
+          <Typography>What are rewards for delivering food parcels?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            On each delivery you will earn 10 Points. If you collect 100 points in your wallet, you can reedem it for 15$ Amazon Vouncher.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -54,18 +52,17 @@ function Faq() {
           aria-controls="panel3a-content"
           id="panel3a-header"
         >
-          <Typography>Disabled Accordion</Typography>
+          <Typography>What will be voluenteer duties ?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Voluenteer  have to pick the food from restaurant, fill the food packaging details, deliver the food to nearest needy people & share their experience.
           </Typography>
         </AccordionDetails>
       </Accordion>
         </Box>
 
-        <Box display="flex"  justifyContent="start"
+        {/* <Box display="flex"  justifyContent="start"
     alignItem='center' sx={{mt:3}} flexDirection='column'>
          <Header
        sx={{mt:5}}
@@ -73,7 +70,7 @@ function Faq() {
          subtitle="Fill this form to get your Questions answered! "
        />
        <button style={{width:"150px",backgroundColor:"turquoise",color:"black",padding:"10px",fontSize:"22px",fontWeight:"bold"}}>Contact Us</button>
-        </Box>
+        </Box> */}
     </Container>
   )
 }
