@@ -100,7 +100,10 @@ function App() {
 								path="/"
 								element={<LandingPage />}
 							/>
-
+								<Route
+								path="/faq"
+								element={<Faq />}
+							/>
 							<Route
 								path="/signup"
 								element={<Sign />}
@@ -170,7 +173,6 @@ function App() {
 								path="/volunteer/history"
 								element={<VolunteerHistory />}
 							/>
-
 							{/* 404 route */}
 							<Route
 								path="*"
@@ -184,10 +186,7 @@ function App() {
 								path="/confirmpassword"
 								element={<ConfirmPassword />}
 							/>
-							<Route
-								path="/faq"
-								element={<Faq />}
-							/>
+						
 						</Routes>
 					</main>
 				</div>

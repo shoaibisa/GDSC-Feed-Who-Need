@@ -120,20 +120,20 @@ function Footer() {
           {/* Bottom area */}
           <div className="md:flex md:items-center md:justify-between">
             {/* Social links */}
-            <ul className="flex mb-4 md:order-1 md:ml-4 md:mb-0">
-              <li>
+            <ul className="flex mb-4 md:order-1 md:ml-4 md:mb-0" >
+              {/* <li style={{paddingTop:"15px"}}>
                 <Link to="#">
                   <h1>Contact</h1>
                 </Link>
-              </li>
-              <li className="ml-4">
+              </li> */}
+              {/* <li className="ml-4">
                 <Link to="#">
                   <h1>About Us</h1>
                 </Link>
-              </li>
-              <li className="ml-4">
-                <Link to="#">
-                  <h1>FAQs</h1>
+              </li> */}
+              <li className="ml-4" style={{marginTop:"10px"}}>
+                <Link to="/faq">
+                  <h1 style={{fontSize:"25x"}}>FAQs</h1>
                 </Link>
               </li>
               <li className="ml-4">
